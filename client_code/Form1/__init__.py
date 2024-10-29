@@ -17,7 +17,7 @@ class Form1(Form1Template):
             ("Boşaltım", 1),
             ("Deri", 2),
             ("Dolaşım", 3),
-            ("Mix", 4),
+            ("Mix (2'den fazla sistem)", 4),
             ("Sindirim", 5),
             ("Sinir", 6),
             ("Solunum", 7)
@@ -58,13 +58,11 @@ class Form1(Form1Template):
             ("Var", 1)
         ]
 
-        # Kusma dropdown için seçenekler
         self.kusma_dropdown.items = [
             ("Yok", 0),
             ("Var", 1)
         ]
 
-        # Oksuruk dropdown için seçenekler
         self.oksuruk_dropdown.items = [
             ("Yok", 0),
             ("Var", 1)
@@ -73,13 +71,11 @@ class Form1(Form1Template):
     def tahmin_et_button_click(self, **event_args):
         """Bu metod butona tıklandığında çağrılır"""
         
-        # tur dropdown değerini al
+        # Kullanıcının girdiği değerleri alın
         tur = self.tur_dropdown.selected_value
-
-        # sistem dropdown değerini al
         sistem = self.sistem_dropdown.selected_value
         
-        # float değerlerini al
+        # Float değerlerini alın
         cBasebC = float(self.cBasebC_textbox.text)
         cBaseEcfc = float(self.cBaseEcfc_textbox.text)
         HCO3Pc = float(self.HCO3Pc_textbox.text)
@@ -95,31 +91,15 @@ class Form1(Form1Template):
         MCH = float(self.MCH_textbox.text)
         MCHC = float(self.MCHC_textbox.text)
         
-        # abdominal_agri dropdown değerini al
+        # Dropdown değerlerini alın
         abdominal_agri = self.abdominal_agri_dropdown.selected_value
-        
-        # genel_durum dropdown değerini al
         genel_durum = self.genel_durum_dropdown.selected_value
-        
-        # idar_problemi dropdown değerini al
         idar_problemi = self.idar_problemi_dropdown.selected_value
-        
-        # inkordinasyon dropdown değerini al
         inkordinasyon = self.inkordinasyon_dropdown.selected_value
-
-        # ishal dropdown değerini al
         ishal = self.ishal_dropdown.selected_value
-        
-        # istahsizlik dropdown değerini al
         istahsizlik = self.istahsizlik_dropdown.selected_value
-
-        # kanama dropdown değerini al
         kanama = self.kanama_dropdown.selected_value
-        
-        # kusma dropdown değerini al
         kusma = self.kusma_dropdown.selected_value
-        
-        # oksuruk dropdown değerini al
         oksuruk = self.oksuruk_dropdown.selected_value
         
         # Model tahmini yapma
@@ -128,5 +108,7 @@ class Form1(Form1Template):
             [tur, sistem, cBasebC, cBaseEcfc, HCO3Pc, p50c, cHCO3Pst, cNa, FHHb, sO2, GRAN, LYM, MON_A, HCT, MCH, MCHC, abdominal_agri, genel_durum, idar_problemi, inkordinasyon, ishal, istahsizlik, kanama, kusma, oksuruk]
         )
 
-        # Sonucu göster
-        self.sonuc_label.text = f"Tahmin Sonucu: {sonuc}"
+        # Sonucu Textbox'ta göster
+        self.sonuc_textbox.text = f"Tahmin Sonucu: {sonuc}"
+
+# `tahmin_et_button` butonunun click olayına yukarıdaki metod bağlanmalıdır.
