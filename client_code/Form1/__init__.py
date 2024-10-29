@@ -109,6 +109,6 @@ class Form1(Form1Template):
         )
 
         # Sonucu Textbox'ta göster
-        self.sonuc_textbox.text = f"Tahmin Sonucu: {sonuc}"
+        self.sonuc_textbox.text = f"Tahmin Sonucu(%85): {sonuc}"
 
 # `tahmin_et_button` butonunun click olayına yukarıdaki metod bağlanmalıdır.
