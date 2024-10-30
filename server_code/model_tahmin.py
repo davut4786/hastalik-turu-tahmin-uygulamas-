@@ -24,50 +24,50 @@ class Form1(Form1Template):
         ]
 
         self.abdominal_agri_dropdown.items = [
-            ("Hayır", 0),
-            ("Evet", 1)
+            ("Yok", 0),
+            ("Var", 1)
         ]
 
         self.genel_durum_dropdown.items = [
-            ("Normal", 0),
-            ("Hastalık", 1)
+            ("Yok", 0),
+            ("Var", 1)
         ]
 
         self.idar_problemi_dropdown.items = [
-            ("Hayır", 0),
-            ("Evet", 1)
+            ("Yok", 0),
+            ("Var", 1)
         ]
 
         self.inkordinasyon_dropdown.items = [
-            ("Hayır", 0),
-            ("Evet", 1)
+            ("Yok", 0),
+            ("Var", 1)
         ]
 
         self.ishal_dropdown.items = [
-            ("Hayır", 0),
-            ("Evet", 1)
+            ("Yok", 0),
+            ("Var", 1)
         ]
 
         self.istahsizlik_dropdown.items = [
-            ("Hayır", 0),
-            ("Evet", 1)
+            ("Yok", 0),
+            ("Var", 1)
         ]
 
         self.kanama_dropdown.items = [
-            ("Hayır", 0),
-            ("Evet", 1)
+            ("Yok", 0),
+            ("Var", 1)
         ]
 
         # Kusma dropdown için seçenekler
         self.kusma_dropdown.items = [
-            ("Hayır", 0),
-            ("Evet", 1)
+            ("Yok", 0),
+            ("Var", 1)
         ]
 
         # Oksuruk dropdown için seçenekler
         self.oksuruk_dropdown.items = [
-            ("Hayır", 0),
-            ("Evet", 1)
+            ("Yok", 0),
+            ("Var", 1)
         ]
 
     def tahmin_et_button_click(self, **event_args):
