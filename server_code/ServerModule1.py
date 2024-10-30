@@ -1,22 +1,26 @@
 import anvil.server
+import pickle
+import urllib.request
 
-import anvil.server
-import joblib
-import pandas as pd
+# GitHub’dan modeli indirme işlevi
+def load_model_from_github():
+    url = "https://raw.githubusercontent.com/davut4786/HastalikTuru/main/hastalikturu_model.pkl"  # GitHub URL'niz
+    model_path = "/tmp/hastalikturu_model.pkl"  # Geçici dosya yolu
+    urllib.request.urlretrieve(url, model_path)  # Modeli indir
+    with open(model_path, 'rb') as file:
+        model = pickle.load(file)  # Modeli yükle
+    return model
 
 # Modeli yükleme
-model = joblib.load('/content/drive/MyDrive/hastalikturu_model.pkl')
+model = load_model_from_github()  # Modeli bellekte tut
 
 @anvil.server.callable
 def model_tahmin(features):
-    # Özellikleri DataFrame'e çevirme
-    columns = ['tur', 'sistem', 'cBasebC', 'cBaseEcfc', 'HCO3Pc', 'p50c', 'cHCO3Pst', 'cNa', 'FHHb', 'sO2', 'GRAN', 'LYM', 'MON_A', 'HCT', 'MCH', 'MCHC', 'abdominal_agri', 'genel_durum', 'idar_problemi', 'inkordinasyon', 'ishal', 'istahsizlik', 'kanama', 'kusma', 'oksuruk']
-    input_data = pd.DataFrame([features], columns=columns)
-
-    # Kategorik değişkenleri sayısal hale getirme (one-hot encoding)
-    input_data = pd.get_dummies(input_data, drop_first=True)
-
+    # Kategorik değişkenleri sayısal hale getirme (one-hot encoding) burada kaldırılıyor
+    # Özellikleri doğrudan kullanıyoruz
+    # Özellikler, modelin beklediği formatta olmalı
+    # features bir liste olmalı
     # Tahmin yapma
-    prediction = model.predict(input_data)
+    prediction = model.predict([features])
 
     return prediction[0]  # Tekil bir sonuç döndür
